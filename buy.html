@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Product</title>
+    <link rel="stylesheet" href="buy.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            
+            function getQueryParam(param) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
+            }
+
+            const productName = getQueryParam('product');
+            const productPrice = getQueryParam('price');
+
+            if (productName && productPrice) {
+                const modal = document.getElementById('purchase-modal');
+                const productNameElement = document.getElementById('product-name');
+                const productPriceElement = document.getElementById('product-price');
+                const form = document.getElementById('purchase-form');
+
+                productNameElement.innerText = productName;
+                productPriceElement.innerText = `Price: NRS ${productPrice}`;
+                form.querySelector('input[name="product"]').value = productName;
+                form.querySelector('input[name="price"]').value = productPrice;
+
+                modal.style.display = 'block'; 
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="nav-content">
+                <div class="logo"><a href="home.html">TheSecondMart</a></div>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div id="purchase-modal" class="modal">
+        <div class="modal-content">
+            <span class="close close-modal">&times;</span>
+            <h2>Purchase Product</h2>
+            <form id="purchase-form" action="process_purchase.php" method="post">
+                <div class="form-group">
+                    <label for="product-name">Product Name:</label>
+                    <p id="product-name">Product Name</p>
+                </div>
+                <div class="form-group">
+                    <label for="product-price">Price:</label>
+                    <p id="product-price">Price</p>
+                </div>
+                <input type="hidden" name="product">
+                <input type="hidden" name="price">
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact Number:</label>
+                    <input type="text" id="contact" name="contact" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <textarea id="address" name="address" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" value="1" min="1" required>
+                </div>
+                <button type="submit" class="submit-btn">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 thesecondmart. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

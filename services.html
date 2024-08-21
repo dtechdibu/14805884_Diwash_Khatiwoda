@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+        <div class="nav-content">
+            <div class="logo">
+                <a href="home.html">TheSecondMart</a> 
+            </div>
+            <ul>
+                <li><a href="home.html">Home</a>
+                </li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="services-section">
+        <div class="service">
+            <img src="earphone.jpg" alt="Earphone">
+            <h3 class="title">Earphone-110P</h3>
+            <p class="description">Price: NRS 1099</p>
+            <button class="buy-now" data-product="Earphone-110P" data-price="1099">Buy Now</button>
+        </div>
+        <div class="service">
+            <img src="headphone.jpg" alt="Headphone">
+            <h3 class="title">JBL Headphone 23K</h3>
+            <p class="description">Price: NRS 2099</p>
+            <button class="buy-now" data-product="JBL Headphone 23K" data-price="2099">Buy Now</button>
+        </div>
+        <div class="service">
+            <img src="earbuds.jpg" alt="Earbuds">
+            <h3 class="title">Oppo Earbuds</h3>
+            <p class="description">Price: NRS 5500</p>
+            <button class="buy-now" data-product="Oppo Earbuds" data-price="5500">Buy Now</button>
+        </div>
+        <div class="service">
+            <img src="marshall.jpg" alt="Mini Bluetooth Speaker">
+            <h3 class="title">Marshall Speaker 876</h3>
+            <p class="description">Price: NRS 9600</p>
+            <button class="buy-now" data-product="Marshall Speaker 876" data-price="9600">Buy Now</button>
+        </div>
+    </section>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const buyNowButtons = document.querySelectorAll('.buy-now');
+
+        buyNowButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const product = this.getAttribute('data-product');
+                const price = this.getAttribute('data-price');
+                window.location.href = `buy.html?product=${encodeURIComponent(product)}&price=${encodeURIComponent(price)}`;
+            });
+        });
+    });
+    </script>
+</body>
+
+</html>
